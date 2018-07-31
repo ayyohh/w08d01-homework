@@ -5,23 +5,6 @@ class Account extends Component {
   state = {
     balance: 0
   }
-  render() {
-// set the default class to `balance` for the balanceClass.
-    const balanceClass = 'balance';
-// if the balance is 0, then add the class zero to balanceClass
-    if (this.state.balance === 0) {
-      this.balanceClass += ' zero';
-    }
-    return (
-      <div className="account">
-        <h2>{this.props.name}</h2>
-        <div className={balanceClass}>${this.state.balance}</div>
-        <input type="text" placeholder="enter an amount" ref={(input) => this.inputBox = input} />
-        <input type="button" value="Deposit" onClick={this.handledDepositClick} />
-        <input type="button" value="Withdraw" onClick={this.handledWithDrawClick} />
-      </div>
-    )
-  }
   handledDepositClick = (e) => {
     // It is good practice to still prevent default behavior
     e.preventDefault();// set a local variable to the amount entered in the text box.
@@ -48,6 +31,24 @@ class Account extends Component {
       alert("you don't have enough money");
     }
     this.inputBox.value = '';
+  }
+  render() {
+// set the default class to `balance` for the balanceClass.
+// if the balance is 0, then add the class zero to balanceClass
+    if (this.state.balance === 0) {
+      this.balanceClass = 'zero';
+    } else {
+      this.balanceClass = 'balance';
+    }
+    return (
+      <div className="account">
+        <h2>{this.props.name}</h2>
+        <div className={this.balanceClass}>${this.state.balance}</div>
+        <input type="text" placeholder="enter an amount" ref={(input) => this.inputBox = input} />
+        <input type="button" value="Deposit" onClick={this.handledDepositClick} />
+        <input type="button" value="Withdraw" onClick={this.handledWithDrawClick} />
+      </div>
+    )
   }
 }
 
