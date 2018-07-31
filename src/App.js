@@ -10,8 +10,8 @@ class App extends Component {
           <div id="logo"><img src={logo} alt="General Assembly logo" /></div>
           <div id="title">Bank of GA</div>
         </div>
-        <Account />
-        <Account />
+        <Account name="checking"/>
+        <Account name="saving"/>
         <div className="clear"></div>
       </div>
     );
@@ -19,4 +19,3 @@ class App extends Component {
 }
 
 export default App;
-
